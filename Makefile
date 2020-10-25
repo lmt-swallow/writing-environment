@@ -6,7 +6,7 @@ OUTPUT_DIR = ./build
 OUTPUT_MAIN = main.pdf
 OUTPUT = $(OUTPUT_DIR)/$(OUTPUT_MAIN)
 
-makall: $(OUTPUT)
+all: $(OUTPUT)
 
 $(OUTPUT_DIR): 
 	mkdir ./build
@@ -15,7 +15,7 @@ $(OUTPUT): $(SRCS) $(OUTPUT_DIR)
 	docker run -it \
 		-v $(abspath $(SRC_DIR)):/workspace  \
 		-v $(abspath $(OUTPUT_DIR)):/build  \
-		$(IMAGE_NAME)
+		$(IMAGE_NAME) \
 		--pdf-engine=lualatex \
 		--template=./templates/plain.tex \
 		-N --listings \
