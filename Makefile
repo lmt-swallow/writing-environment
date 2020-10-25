@@ -24,3 +24,10 @@ $(OUTPUT_DIR)/$(OUTPUT_NAME): $(SRCS) $(OUTPUT_DIR)
 		-f markdown+tex_math_double_backslash \
 		-o /build/$(OUTPUT_MAIN) \
 		$(SRC_MAIN)
+
+.PHONY: lint
+lint: $(SRCS)
+	docker run -it --rm \
+		-v $(PWD):/work \
+		textlint/technical-writing \
+		$(SRC_MAIN)
