@@ -1,16 +1,17 @@
-all: $(OUTPUT_DIR)/$(OUTPUT_NAME)
-
-IMAGE_NAME = ghcr.io/lmt-swallow/pandoc
+IMAGE_NAME = ghcr.io/lmt-swallow/writing-environment:latest
 SRC_DIR = ./src
 SRC_MAIN = main.md
 
 OUTPUT_DIR = ./build
 OUTPUT_MAIN = main.pdf
+OUTPUT = $(OUTPUT_DIR)/$(OUTPUT_MAIN)
 
-$(BUILD_DIR): 
+makall: $(OUTPUT)
+
+$(OUTPUT_DIR): 
 	mkdir ./build
 
-$(OUTPUT_DIR)/$(OUTPUT_NAME): $(SRCS) $(OUTPUT_DIR)
+$(OUTPUT): $(SRCS) $(OUTPUT_DIR)
 	docker run -it \
 		-v $(abspath $(SRC_DIR)):/workspace  \
 		-v $(abspath $(OUTPUT_DIR)):/build  \
@@ -31,3 +32,7 @@ lint: $(SRCS)
 		-v $(abspath $(SRC_DIR))/:/work \
 		textlint/technical-writing \
 		$(SRC_MAIN)
+
+.PHONY: clean
+clean: $(OUTPUT_DIR)
+	rm -rf $(OUTPUT_DIR)
