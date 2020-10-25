@@ -1,6 +1,6 @@
 FROM haskell:8.10
 
-RUN apt update -y && apt-get install -y  \
+RUN apt update -y && apt install -y  \
   texlive-latex-base \
   texlive-latex-recommended \
   texlive-science \
@@ -10,6 +10,7 @@ RUN apt update -y && apt-get install -y  \
   texlive-bibtex-extra \
   texlive-luatex \
   texlive-lang-japanese \
+  latexmk \
   fontconfig \ 
   python \
   python-dev \
