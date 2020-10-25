@@ -28,6 +28,6 @@ $(OUTPUT_DIR)/$(OUTPUT_NAME): $(SRCS) $(OUTPUT_DIR)
 .PHONY: lint
 lint: $(SRCS)
 	docker run -it --rm \
-		-v $(PWD):/work \
+		-v $(abspath $(SRC_DIR))/:/work \
 		textlint/technical-writing \
 		$(SRC_MAIN)
