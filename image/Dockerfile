@@ -21,7 +21,6 @@ RUN apt update -y && apt-get install -y  \
 
 RUN cabal update && cabal install \
   pandoc \
-  pandoc-csv2table \
   pandoc-crossref \
   pandoc-citeproc \
   && rm -rf /root/.cabal/lib /root/.cabal/packages
