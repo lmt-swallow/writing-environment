@@ -10,6 +10,7 @@ RUN apt update -y && apt install -y  \
   texlive-bibtex-extra \
   texlive-luatex \
   texlive-lang-japanese \
+  texlive-extra-utils \  
   latexmk \
   fontconfig \ 
   python \
